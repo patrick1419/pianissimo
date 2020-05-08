@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <style>
+        @import 'pianissimo/main.css';
+    </style>
+    <body>
+        <header>
+            <div id="header"></div>
+        </header>
+        <div id="main-content">
+            <div id="title">
+                <h1><span>{{ title }}</span></h1>
+            </div>
+            <div id="sub-content" class="sub--content">
+                <label for="savedUsers">{{ headline }}</label>
+                <select v-model="selectedUser" @change="changeUser">
+                    <option disabled selected>{{selectedUser}}</option>
+                    <option v-for="users in usercontainer">
+                        {{ users.element }}
+                    </option>
+                </select>
+                <form method="post" class="login--formular">
+                    <label for="username">{{ usernameLabel }}</label>
+                    </br>
+                    <input v-model="username">
+                    <p></p>
+                    <label for="password">{{passwordLabel}}</label>
+                    </br>
+                    <input v-model="password">
+                    <p></p>
+                    <button @click='submitTrigger' value="Login" class="primary--button">
+                        <span class="btn--text">Sign in</span>
+                    </button>
+                </form>
+            </div>
+            <div id="registrate" class="registrate--content">
+                <span class="registrate--headline">Noch nicht registriert?</span>
+                <form id="registrateMe"method="post" class="registrate--formular hide--element">
+                    <label for="chooseUsername">{{ chooseUsernameLabel }}</label>
+                    </br>
+                    <input v-model="chooseUsername">
+                    <p></p>
+                    <label for="choosePassword">{{ choosePasswordLabel }}</label>
+                    </br>
+                    <input v-model="choosePassword">
+                    <p></p>
+                    <label for="repeatPassword">{{ repeatPasswordLabel }}</label>
+                    </br>
+                    <input v-model="repeatPassword">
+                    <p></p>
+                    <button class="primary--button" v-on:click="triggerRegistration($event)">
+                        <span class="btn--text">Join in!</span>
+                    </button>
+                </form>
+                </br>
+                <button id="openFormular" class="open--btn" @click="triggerFormular">
+                    <span class="btn--text">Join in!</span>
+                </button>
+            </div>
+        </div>
+        <footer>
+            <div id="footer" class="footer--main"></div>
+        </footer>
+        <script src="pianissimo/index.js"></script>
+    </body>
+</html>
